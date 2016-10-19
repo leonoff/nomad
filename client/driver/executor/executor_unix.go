@@ -32,8 +32,8 @@ func (e *UniversalExecutor) LaunchSyslogServer() (*SyslogServerState, error) {
 		return nil, err
 	}
 
-	e.logger.Printf("[DEBUG] syslog-server: launching syslog forwarder to addr: %v", e.ctx.LogConfig.RemoteSyslog)
-	e.syslogRemoteClient = NewSyslogClient(e.ctx.LogConfig.RemoteSyslog, e.ctx.AllocDir.AllocDir, e.logger)
+	e.logger.Printf("[DEBUG] syslog-server: launching syslog forwarder to addr: %v", e.ctx.Task.LogConfig.RemoteSyslog)
+	e.syslogRemoteClient = logging.NewSyslogClient(e.ctx.Task.LogConfig.RemoteSyslog, e.ctx.AllocDir.AllocDir, e.logger)
 
 	e.syslogServer = logging.NewSyslogServer(l, e.syslogChan, e.logger)
 	go e.syslogServer.Start()
