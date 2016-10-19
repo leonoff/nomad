@@ -1350,7 +1350,7 @@ func (c *Client) runAllocs(update *allocUpdates) {
 		// previous allocation
 		var prevAllocDir *allocdir.AllocDir
 		tg := add.Job.LookupTaskGroup(add.TaskGroup)
-		if tg != nil && tg.EphemeralDisk.Sticky == true && ar != nil {
+		if tg != nil && tg.EphemeralDisk != nil && tg.EphemeralDisk.Sticky == true && ar != nil {
 			prevAllocDir = ar.GetAllocDir()
 		}
 

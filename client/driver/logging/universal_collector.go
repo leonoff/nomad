@@ -89,6 +89,7 @@ func (s *SyslogCollector) LaunchCollector(ctx *LogCollectorContext) (*SyslogColl
 		return nil, err
 	}
 
+	s.logger.Printf("[DEBUG] syslog-server: launching syslog forwarder to addr: %v", s.ctx.LogConfig.RemoteSyslog)
 	s.client = NewSyslogClient(s.ctx.LogConfig.RemoteSyslog, s.ctx.AllocDir.AllocDir, s.logger)
 
 	s.server = NewSyslogServer(l, s.syslogChan, s.logger)
