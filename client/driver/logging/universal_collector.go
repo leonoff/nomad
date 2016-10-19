@@ -86,6 +86,7 @@ func (s *SyslogCollector) LaunchCollector(ctx *LogCollectorContext) (*SyslogColl
 	s.ctx = ctx
 	// configuring the task dir
 	if err := s.configureTaskDir(); err != nil {
+		s.logger.Printf("[DEBUG] universal_collector: error configuring task dir")
 		return nil, err
 	}
 

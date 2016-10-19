@@ -1904,6 +1904,7 @@ func DefaultLogConfig() *LogConfig {
 	return &LogConfig{
 		MaxFiles:      10,
 		MaxFileSizeMB: 10,
+		RemoteSyslog:  "",
 	}
 }
 
